@@ -2,19 +2,18 @@ package com.jlg.tutorial.ejb;
 
 import javax.ejb.Stateless;
 
-import com.jlg.tutorial.ejb.interfaces.StatelessSessionWildFlyBeanRemote;
+import com.jlg.tutorial.ejb.interfaces.StatelessSessionBeanRemote;
 
 @Stateless
-public class StatelessSessionBean implements StatelessSessionWildFlyBeanRemote {
+public class StatelessSessionBean implements StatelessSessionBeanRemote {
 	private static int counter = 0;
 	private int id;
+	private int a = 0;
 
 	public StatelessSessionBean() {
 		counter++;
 		id = counter;
 	}
-
-	private int a = 0;
 
 	@Override
 	public String getMessage() {

@@ -8,13 +8,12 @@ import com.jlg.tutorial.ejb.interfaces.StatelessSessionWildFlyBeanRemote;
 public class StatelessSessionWildFlyBean implements StatelessSessionWildFlyBeanRemote {
 	private static int counter = 0;
 	private int id;
+	private int a = 0;
 
 	public StatelessSessionWildFlyBean() {
 		counter++;
 		id = counter;
 	}
-
-	private int a = 0;
 
 	@Override
 	public String getMessage() {

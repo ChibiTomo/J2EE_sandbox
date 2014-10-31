@@ -1,5 +1,3 @@
-import java.io.BufferedReader;
-import java.io.InputStreamReader;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.TimeUnit;
@@ -7,12 +5,9 @@ import java.util.concurrent.TimeUnit;
 import javax.naming.Context;
 import javax.naming.InitialContext;
 
-import com.jlg.tutorial.ejb.interfaces.StatelessSessionWildFlyBeanRemote;
+import com.jlg.tutorial.ejb.interfaces.StatelessSessionBeanRemote;
 
 public class EJBSessionStatelessClient {
-	public static BufferedReader reader = new BufferedReader(
-			new InputStreamReader(System.in));
-
 	public static void main(String[] args) {
 		try {
 			int delay = 7000;
@@ -27,7 +22,7 @@ public class EJBSessionStatelessClient {
 			// JBoss WildFly: la référence JNDI de l'EJB est différente
 			// name = "ejb:/EJBSessionStateless//StatelessSessionBean!com.jlg.tutorial.ejb.interfaces.StatelessSessionBeanRemote";
 
-			final StatelessSessionWildFlyBeanRemote bean = (StatelessSessionWildFlyBeanRemote) ctx
+			final StatelessSessionBeanRemote bean = (StatelessSessionBeanRemote) ctx
 					.lookup(name);
 
 			class MyRunnable implements Runnable {
