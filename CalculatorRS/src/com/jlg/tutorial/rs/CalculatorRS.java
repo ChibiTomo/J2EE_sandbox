@@ -1,9 +1,5 @@
 package com.jlg.tutorial.rs;
 
-import java.util.logging.Level;
-import java.util.logging.Logger;
-
-import javax.ejb.Singleton;
 import javax.ws.rs.FormParam;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
@@ -12,12 +8,10 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.QueryParam;
 import javax.ws.rs.core.MediaType;
 
-import com.jlg.tutorial.obj.Vector;
+import com.jlg.tutorial.entity.Vector;
 
-@Singleton
 @Path("/calc")
 public class CalculatorRS {
-	private static Logger logger = Logger.getLogger("CalculatorRS");
 
 	@GET
 	@Produces(MediaType.TEXT_PLAIN)
@@ -40,7 +34,7 @@ public class CalculatorRS {
 	@GET
 	@Produces(MediaType.TEXT_HTML)
 	public String addHTML(@QueryParam("a") int a, @QueryParam("b") int b) {
-		return "<html> " + "<title>" + "Calculator RS" + "</title>" + "<body>"
+		return "<html>" + "<title>" + "Calculator RS" + "</title>" + "<body>"
 				+ (a + b) + "</body>" + "</html> ";
 	}
 
@@ -50,13 +44,10 @@ public class CalculatorRS {
 	public Vector addVector(@QueryParam("v1") Vector v1,
 			@QueryParam("v2") Vector v2) {
 
-		// logger.log(Level.INFO, "v1=" + v1);
-		// logger.log(Level.INFO, "v2=" + v2);
 		Vector result = new Vector(10, 11);
 		if (v1 != null && v2 != null) {
 			result = new Vector(v1.x + v2.x, v1.y + v2.y);
 		}
-		// logger.log(Level.INFO, "result=" + result);
 		return result;
 	}
 
@@ -65,9 +56,6 @@ public class CalculatorRS {
 	@Produces(MediaType.TEXT_PLAIN)
 	public int scalarVector(@FormParam("v1") Vector v1,
 			@FormParam("v2") Vector v2) {
-		logger.log(Level.INFO, "v1=" + v1);
-		logger.log(Level.INFO, "v2=" + v2);
-
 		return v1.x * v2.x + v1.y * v2.y;
 	}
 
